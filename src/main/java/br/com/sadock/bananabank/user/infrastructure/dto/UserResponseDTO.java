@@ -1,0 +1,10 @@
+package br.com.sadock.bananabank.user.infrastructure.dto;
+
+public record UserResponseDTO(
+		Long id, 
+		String username, 
+		String email, 
+		String maskedCpf, 
+		String phoneNumber) {
+
+}
