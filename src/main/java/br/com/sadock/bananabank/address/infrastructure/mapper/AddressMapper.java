@@ -3,6 +3,8 @@ package br.com.sadock.bananabank.address.infrastructure.mapper;
 import br.com.sadock.bananabank.address.domain.model.Address;
 import br.com.sadock.bananabank.address.infrastructure.dto.AddressRequestDTO;
 import br.com.sadock.bananabank.address.infrastructure.jpa.entity.AddressEntityJPA;
+import br.com.sadock.bananabank.user.domain.model.User;
+import br.com.sadock.bananabank.user.infrastructure.jpa.entity.UserEntityJPA;
 
 public class AddressMapper {
 
@@ -10,6 +12,11 @@ public class AddressMapper {
         if (dto == null) {
             return null;
         }
+        
+        User user = new User();
+        user.setId(dto.userId());
+        
+        
         return new Address(
                 null,
                 dto.street(),
@@ -20,7 +27,7 @@ public class AddressMapper {
                 dto.state(),
                 dto.cep(),
                 null,
-                dto.userId()
+                user
         );
     }
 
@@ -28,6 +35,7 @@ public class AddressMapper {
         if (address == null) {
             return null;
         }
+        
         return new AddressRequestDTO(
                 address.getStreet(),
                 address.getNumber(),
@@ -36,7 +44,7 @@ public class AddressMapper {
                 address.getCity(),
                 address.getState(),
                 address.getCep(),
-                address.getUserId()
+                address.getUser().getId()
         );
     }
 
@@ -44,6 +52,10 @@ public class AddressMapper {
         if (address == null) {
             return null;
         }
+        
+        UserEntityJPA userEntity = new UserEntityJPA();
+        userEntity.setId(address.getUser().getId());
+        
         return new AddressEntityJPA(
                 address.getId(),
                 address.getStreet(),
@@ -54,7 +66,7 @@ public class AddressMapper {
                 address.getState(),
                 address.getCep(),
                 address.getCreatedAt(),
-                address.getUserId()
+                userEntity
         );
     }
 
@@ -62,6 +74,10 @@ public class AddressMapper {
         if (entity == null) {
             return null;
         }
+        
+        User user = new User();
+        user.setId(entity.getUser().getId());
+        
         return new Address(
                 entity.getId(),
                 entity.getStreet(),
@@ -72,7 +88,7 @@ public class AddressMapper {
                 entity.getState(),
                 entity.getCep(),
                 entity.getCreatedAt(),
-                entity.getUserId()
+                user
         );
     }
 }

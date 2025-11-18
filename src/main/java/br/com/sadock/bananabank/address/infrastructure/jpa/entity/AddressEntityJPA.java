@@ -2,11 +2,15 @@ package br.com.sadock.bananabank.address.infrastructure.jpa.entity;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import br.com.sadock.bananabank.user.infrastructure.jpa.entity.UserEntityJPA;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -48,6 +52,8 @@ public class AddressEntityJPA {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @JsonBackReference
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntityJPA user;
 }

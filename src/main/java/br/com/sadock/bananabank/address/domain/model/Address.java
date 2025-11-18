@@ -2,6 +2,8 @@ package br.com.sadock.bananabank.address.domain.model;
 
 import java.time.LocalDateTime;
 
+import br.com.sadock.bananabank.user.domain.model.User;
+
 public class Address {
     private Long id;
     private String street;
@@ -12,10 +14,10 @@ public class Address {
     private String state;
     private String cep;
     private LocalDateTime createdAt;
-    private Long userId;
+    private User user;
 
     public Address(Long id, String street, String number, String complement, String district, String city,
-            String state, String cep, LocalDateTime createdAt, Long userId) {
+            String state, String cep, LocalDateTime createdAt, User user) {
         super();
         this.id = id;
         this.street = street;
@@ -26,7 +28,7 @@ public class Address {
         this.state = state;
         this.cep = cep;
         this.createdAt = createdAt;
-        this.userId = userId;
+        this.user = user;
     }
 
     public Address() {
@@ -105,12 +107,12 @@ public class Address {
         this.createdAt = createdAt;
     }
 
-    public Long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }

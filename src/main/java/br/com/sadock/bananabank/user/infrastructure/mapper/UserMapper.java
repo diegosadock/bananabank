@@ -20,7 +20,8 @@ public class UserMapper {
                 dto.password(),
                 CpfMasker.unmask(dto.cpf()),
                 dto.phoneNumber(),
-                LocalDateTime.now()
+                LocalDateTime.now(),
+                null
         );
     }
 
@@ -34,7 +35,8 @@ public class UserMapper {
                 user.getPassword(),
                 user.getCpf(),
                 user.getPhoneNumber(),
-                user.getCreatedAt()
+                user.getCreatedAt(),
+                null
         );
     }
 
@@ -52,7 +54,8 @@ public class UserMapper {
                 entity.getPassword(),
                 entity.getCpf(),
                 entity.getPhoneNumber(),
-                entity.getCreatedAt()
+                entity.getCreatedAt(),
+                null
         );
     }
 
